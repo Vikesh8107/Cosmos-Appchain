@@ -1,6 +1,6 @@
 # Created with [AIPRM Prompt "Research Paper Summary"](https://www.aiprm.com/prompts/productivity/summarize/1789744349941338112/)
 
-**Document Title: Understanding Cosmos SDK - A Beginner's Guide**
+# Document Title: Understanding Cosmos SDK - A Beginner's Guide
 
 **Introduction:**
 The Cosmos SDK is an open-source framework designed for constructing multi-asset public Proof-of-Stake (PoS) blockchains, such as the Cosmos Hub, and permissioned Proof-of-Authority (PoA) blockchains. The primary objective is to enable developers, even beginners, to effortlessly create custom blockchains capable of seamless interoperability with other blockchains.
