@@ -1,5 +1,3 @@
-# Created with [AIPRM Prompt "Research Paper Summary"](https://www.aiprm.com/prompts/productivity/summarize/1789744349941338112/)
-
 # Document Title: Understanding Cosmos SDK - A Beginner's Guide
 
 **Introduction:**
