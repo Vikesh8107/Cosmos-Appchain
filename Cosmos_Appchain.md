@@ -249,41 +249,151 @@ Adjust parameters in the `app.toml` file to customize various aspects of the app
 
 ### Setting Up a Testnet
 
-...
+To set up a testnet for Cosmos AppChain, follow these steps:
+
+1. **Network Configuration:**
+   - Create a new directory for your testnet and navigate into it.
+   - Create a `config` directory within the testnet directory.
+   - Generate a Genesis file for your testnet. You can use the following command as a starting point:
+
+     ```bash
+     cosmos-appchain init --chain-id <testnet-name> <path-to-genesis-file>
+     ```
+
+   - Modify the generated Genesis file to customize parameters such as initial validators, block time, and more.
+
+2. **Validator Setup:**
+   - Choose validators to participate in your testnet. Ensure they have the necessary prerequisites installed (Go, Cosmos SDK, etc.).
+   - Share the Genesis file with the selected validators.
+   - Validators should initialize their nodes using the provided Genesis file:
+
+     ```bash
+     cosmos-appchain init --chain-id <testnet-name> --home <validator-node-home>
+     ```
+
+3. **Genesis Transactions:**
+   - Validators can submit their Genesis transactions to join the network. These transactions include key information such as their public keys and initial token allocations.
+
+     ```bash
+     cosmos-appchain gentx --name <validator-name> --amount <staking-amount> --home <validator-node-home>
+     ```
+
+   - Validators submit their transactions to the network.
+
+4. **Collect Genesis Transactions:**
+   - As the network operator, collect the Genesis transactions from validators.
+
+     ```bash
+     cosmos-appchain collect-gentxs --home <your-node-home>
+     ```
+
+   - The collected transactions should be added to the Genesis file.
+
+5. **Start the Testnet:**
+   - Start the nodes for both the network operator and validators.
+
+     ```bash
+     cosmos-appchain start --home <your-node-home>
+     ```
+
+   - Your Cosmos AppChain testnet is now up and running!
+
+6. **Connect and Test:**
+   - Validators and other participants can now connect to the testnet and test their applications.
 
 ### Mainnet Deployment
 
-...
+
+
+This is a general guide, and you may need to adjust it based on the specific requirements and parameters of your Cosmos AppChain. Please replace placeholders such as `<testnet-name>`, `<path-to-genesis-file>`, `<validator-node-home>`, `<validator-name>`, `<staking-amount>`, and `<your-node-home>` with the actual values or paths relevant to your project.
+
+
+## Mainnet Deployment
+
+### Deploying Cosmos AppChain to Mainnet
+
+Deploying Cosmos AppChain to the mainnet involves careful planning and coordination. Below are the high-level steps to deploy your application on the mainnet:
+
+1. **Network Configuration:**
+   - Prepare the production-level configuration for your Cosmos AppChain.
+   - Set up and configure a network of production-ready validators.
+   - Customize the `config.toml` file with appropriate parameters for mainnet deployment.
+
+2. **Validator Selection:**
+   - Choose reliable and well-established validators for the mainnet.
+   - Validators should meet the hardware and software requirements for running a production node.
+
+3. **Genesis File:**
+   - Generate the Genesis file for the mainnet with information about initial validators, token allocations, and other crucial parameters.
+
+     ```bash
+     cosmos-appchain init --chain-id <mainnet-name> <path-to-genesis-file>
+     ```
+
+4. **Genesis Transactions:**
+   - Validators submit their Genesis transactions with staking information.
+
+     ```bash
+     cosmos-appchain gentx --name <validator-name> --amount <staking-amount> --home <validator-node-home>
+     ```
+
+   - Collect and incorporate these transactions into the Genesis file.
+
+5. **Launch the Mainnet:**
+   - Start the nodes for validators and other network participants.
+
+     ```bash
+     cosmos-appchain start --home <your-node-home>
+     ```
+
+6. **Monitor and Maintain:**
+   - Continuously monitor the mainnet for performance, stability, and security.
+   - Be prepared to address any issues promptly.
 
 ## Testing
 
 ### Unit Tests
 
-...
+Unit tests ensure the individual components of Cosmos AppChain function correctly in isolation. To run unit tests:
+
+```bash
+make unit-tests
+```
 
 ### Integration Tests
 
-...
+Integration tests verify the interaction between different components. To run integration tests:
+
+```bash
+make integration-tests
+```
 
 ## Troubleshooting
 
 ### Common Issues
 
-...
+In case you encounter common issues during deployment or runtime, refer to the following guide for troubleshooting steps.
 
 ### Debugging Techniques
 
-...
+For more complex issues, employ advanced debugging techniques such as logging, stack traces, and performance profiling.
 
 ## Advanced Features
 
 ### Inter-Blockchain Communication (IBC)
 
-...
+Cosmos AppChain supports Inter-Blockchain Communication (IBC), allowing communication with other blockchains in the Cosmos ecosystem. To utilize IBC:
+
+- Configure IBC in your application.
+- Refer to the [IBC documentation](https://ibc.cosmos.network/main) for detailed implementation guidance.
 
 ### Custom Transaction Types
 
-...
+Extend the functionality of Cosmos AppChain by implementing custom transaction types. Follow these steps:
+
+1. Define your custom transaction type in the `x/` directory.
+2. Register the new module in `app.go`.
+3. Update `app.go` to include the new module's keeper.
 
 ## Governance
 
